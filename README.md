@@ -81,8 +81,8 @@ A interface segue o idioma do navegador e o tema do sistema operacional, e cada 
 ```mermaid
 flowchart LR
     U["Usuários<br/>(navegador)"] -->|HTTPS| P["Proxy HTTPS<br/>Caddy"]
-    P --> A["Aplicação<br/>Java 21 · Spring Boot 4 · Spring AI 2"]
-    A --> DB[("PostgreSQL + pgvector<br/>usuários, conversas, PDFs,<br/>trechos e vetores")]
+    P --> A["Aplicação<br/>Java 25 · Spring Boot 4.2 · Spring AI 2.1"]
+    A --> DB[("PostgreSQL 19 + pgvector<br/>usuários, conversas, PDFs,<br/>trechos e vetores")]
     A -->|"perguntas e trechos"| L["Servidor de LLM<br/>Ollama"]
     L --- M1["qwen2.5:7b<br/>escreve as respostas"]
     L --- M2["bge-m3<br/>busca multilíngue"]
@@ -118,9 +118,9 @@ sequenceDiagram
 
 | Camada | Tecnologia |
 |---|---|
-| Linguagem e framework | Java 21, Spring Boot 4.1, Spring Security 7 (2FA), Spring AI 2 |
-| Telas | Thymeleaf, HTML e CSS próprios, sem framework de JavaScript |
-| Banco | PostgreSQL 17 com pgvector, migrações com Flyway, sessões no banco |
+| Linguagem e framework | Java 25 LTS, Spring Boot 4.2, Spring Security 7 (2FA), Spring AI 2.1 |
+| Telas | Thymeleaf, HTML e CSS próprios, ícones Bootstrap Icons inline (sem CDN nem framework JS) |
+| Banco | PostgreSQL 19 com pgvector, migrações com Flyway, sessões no banco |
 | Modelos | Ollama: `qwen2.5:7b` (respostas) e `bge-m3` (busca, multilíngue) |
 | Infraestrutura | Docker Compose; proxy HTTPS Caddy; servidor de LLM separado; opção de cluster com Docker Swarm |
 | Qualidade | Testes automatizados com Postgres real (Testcontainers) e roteiro de telas no Firefox |
